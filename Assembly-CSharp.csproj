@@ -45,6 +45,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>     <Compile Include="Assets\OrbitGeneration.cs" />
+     <None Include="Assets\Assets\Textures\1.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/home/brice/development/unity/orbit-simulation/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orbit_Generation : MonoBehaviour
+public class OrbitGeneration : MonoBehaviour
 {
 
-    public int planetsCount = 500;
-    public int maxRadius = 200;
+    public int planetCount = 500;   // Changes the number of planets in our solor system
+    public int maxRadius = 200;      // Changes available spawn distance from sun
     public GameObject[] planets;
     public Material[] materials;
 
@@ -25,7 +25,7 @@ public class Orbit_Generation : MonoBehaviour
     {
         var p = new GameObject[count];
         var pCopy = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        RigidBody rb = pCopy.AddComponent<RigidBody>();
+        Rigidbody rb = pCopy.AddComponent<Rigidbody>();
         rb.useGravity = false;
 
         for (int i = 0; i < count; i++)
