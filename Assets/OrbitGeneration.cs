@@ -33,7 +33,7 @@ public class OrbitGeneration : MonoBehaviour
             var plnt = GameObject.Instantiate(pCopy);
             plnt.transform.position = this.transform.position +
                 new Vector3(Random.Range(-maxRadius, maxRadius),
-                            Random.Range(-maxRadius, maxRadius),
+                            Random.Range(-10, 10),
                             Random.Range(-maxRadius, maxRadius));
             plnt.transform.localScale *= Random.Range(0.5f, 1);
             plnt.GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)];
@@ -54,6 +54,22 @@ public class OrbitGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foreach (GameObject p in planets)
+        {
+            Vector3 diff = this.transform.position - p.transform.position;
 
+            float dist = diff.magnitude;
+            Vector3 gravityDir = diff.normalized;
+            float gravity = 6.7f * (this.transform.localScale.x *
+                                    p.transform.localScale.x * 80) /
+                                    (dist * dist);
+
+            Vector3 gravityVect = (gravityDir * gravity);
+
+            p.transform.GetComponent<Rigidbody>()
+                .AddForce(p.transform.forward, ForceMode.Acceleration);
+            p.transform.GetComponent<Rigidbody>()
+                .AddForce(gravityVect, ForceMode.Acceleration);
+        }
     }
 }
